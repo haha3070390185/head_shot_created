@@ -41,6 +41,7 @@ async def generate_avatar_task(personality_tags: list, style_tags: list) -> str:
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
+        "X-DashScope-Async": "enable",
     }
 
     payload = {
