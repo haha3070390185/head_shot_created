@@ -1,12 +1,13 @@
-from pydantic_settings import BaseSettings
+import os
+from dotenv import load_dotenv
 from functools import lru_cache
 
+load_dotenv()
 
-class Settings(BaseSettings):
-    dashscope_api_key: str = ""
 
-    class Config:
-        env_file = ".env"
+class Settings:
+    def __init__(self):
+        self.dashscope_api_key = os.getenv("DASHSCOPE_API_KEY", "")
 
 
 @lru_cache()
