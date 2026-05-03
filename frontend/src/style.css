@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background-color: #0a0a0f;
+  color: #e0e0e0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #12121a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f1f2e;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a2a3e;
+}
+
+@layer components {
+  .glass-card {
+    background: rgba(18, 18, 26, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(31, 31, 46, 0.5);
+  }
+
+  .neon-border {
+    position: relative;
+  }
+
+  .neon-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(135deg, #00f3ff, #bf00ff, #ff00ff);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .neon-border:hover::before {
+    opacity: 0.5;
+  }
+
+  .tag-button {
+    @apply px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300;
+    @apply bg-dark-card border border-dark-border text-gray-300;
+    @apply hover:border-neon-blue hover:text-neon-blue hover:shadow-neon;
+  }
+
+  .tag-button-selected {
+    @apply bg-neon-blue/20 border-neon-blue text-neon-blue shadow-neon;
+  }
+
+  .primary-button {
+    @apply px-8 py-3 rounded-lg font-bold text-lg transition-all duration-300;
+    @apply bg-gradient-to-r from-neon-blue to-neon-purple;
+    @apply hover:shadow-neon hover:scale-105 active:scale-95;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+}
